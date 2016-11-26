@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="icon" type="image/png" href="images/DB_16х16.png">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description"
+	content="A front-end template that helps you build fast, modern mobile web apps.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material Dashboard Lite</title>
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage"
+	content="images/touch/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileColor" content="#3372DF">
+
+<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+<!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900'
+	rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!-- inject:css -->
+<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+<link rel="stylesheet" href="css/angular-material-paging.css">
+
+<link rel="stylesheet" href="css/application.css">
+<link data-require="bootstrap-css@3.2.0" data-semver="3.2.0"
+	rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	
+	<script src="/js/angular-sanitize.js"></script>
+		<script src="/js/angular-translate.js"></script>
+		<script src="/js/ui-bootstrap-tpls.js"></script>
+		<script src="/js/dialogs-default-translations.js"></script>
+		<script src="/js/dialogs.js"></script>
+<script src="js/angular-material-paging.js"></script>
+<script type="text/javascript" src="js/gallery/script.js"></script>
+
+</head>
+<body ng-app="screenshot" ng-controller="screenshotController">
+	<div
+		class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen"  id="popupContainer">
+			<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<div class="mdl-layout-spacer"></div>
+
+			
+
+			
+
+				<div class="avatar-dropdown" id="icon">
+					<span ng-if="user.machineName">{{user.machineName}}</span> <img src="{{userimageUrl}}">
+				</div>
+
+				<ul
+					class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
+					for="icon">
+					<li class="mdl-list__item mdl-list__item--two-line"><span
+						class="mdl-list__item-primary-content"> <span
+							class="material-icons mdl-list__item-avatar" style="background: url('{{userimageUrl}}');background-size: cover;"></span> <span>{{user.machineName}}</span>
+							<span class="mdl-list__item-sub-title">{{user.email}}</span>
+					</span></li>
+					<li class="list__item--border-top"></li>
+					<a href="/User/Profil"><li class="mdl-menu__item mdl-list__item" > <span
+						class="mdl-list__item-primary-content"> <i
+							class="material-icons mdl-list__item-icon">account_circle</i> My
+							account
+					</span></li></a>
+					
+
+					<li class="list__item--border-top"></li>
+					<a href="/Setting"><li class="mdl-menu__item mdl-list__item"><span
+						class="mdl-list__item-primary-content"> <i
+							class="material-icons mdl-list__item-icon">settings</i> Configuration
+					</span></li></a>
+					<a href="/logout"><li class="mdl-menu__item mdl-list__item"><span
+						class="mdl-list__item-primary-content"> <i
+							class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+							Log out
+					</span></li></a>
+				</ul>
+
+
+
+			</div>
+		</header>
+
+		<div class="mdl-layout__drawer">
+			<header>Menu</header>
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link "
+					href="/Home"> <i class="material-icons" role="presentation">dashboard</i>
+					Home
+				</a> <a class="mdl-navigation__link mdl-navigation__link--current" href="/Screenshot"> <i
+					class="material-icons" role="presentation">image</i> Screenshot
+				</a> <a class="mdl-navigation__link" href="/File"> <i
+					class="material-icons" role="presentation">insert_drive_file</i>
+					File changement trace
+				</a> <a class="mdl-navigation__link" href="/Keylogger"> <i
+					class="material-icons" role="presentation">text_format</i>
+					Keylogger
+				</a> <a class="mdl-navigation__link" href="/Processus"> <i
+					class="material-icons" role="presentation">airplay</i> Processus
+					Log
+				</a> <a class="mdl-navigation__link" href="/Session"> <i
+					class="material-icons" role="presentation">add_to_queue</i> Session
+				</a>
+
+				<div class="mdl-layout-spacer"></div>
+				<a class="mdl-navigation__link"
+					href="https://github.com/CreativeIT/getmdl-dashboard"> <i
+					class="material-icons" role="presentation">link</i> GitHub
+				</a>
+			</nav>
+		</div>
+
+		<main class="mdl-layout__content" >
+		<center><H1 style="color: white;">Screenshot</H1></center>
+		<center>
+			<wan-material-paging wmp-total="images.totalPages"
+				goto-page="gotoPage()" position="center"
+				current-page="pageScreenshotCourant" step="6">
+			</wan-material-paging>
+		</center>
+		<div class="col-md-6 col-sm-12 col-xs-12 spacer"
+			ng-repeat="i in images.content">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<center>{{i.date|date:'dd-MM-yyyy HH:mm:ss'}}</center>
+				</div>
+				<div class="panel-body">
+					<center>
+						<a href="#"><img src="getPhoto?path={{i.imagePath}}" width="100%" height="100%" /></a>
+					</center>
+				</div>
+			</div>
+		</div>		
+		</main>
+	</div>
+	<script src="js/material.js"></script>
+	<!-- endinject -->
+</body>
+</html>

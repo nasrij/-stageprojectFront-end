@@ -1,0 +1,100 @@
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Login</title>
+</head>
+<body>
+<form th:action="@{/signin}" method="POST">
+ <label>Login :</label>
+  <div>
+  <label>Username :</label>
+  <input type="text" name="username"/>
+  </div>
+  <div>
+  <label>password :</label>
+  <input type="password" name="password"/>
+  </div>
+  <input type="submit" value="Login"/>
+
+</form>
+
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Login</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext" rel="stylesheet" />
+
+<style type="text/css">
+
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+  .mycard{
+	display: inline-block;
+    zoom: 1;
+    display*: inline; /* ie hack */
+    width: 50%;
+}
+.loginBox {
+  max-width:  90%;
+  width: 500px
+}
+
+.stretch input  {
+  width: 100%
+}
+</style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script type="text/javascript" src="https://rawgit.com/nasrij/a7217e63a393150f272163ec9024cf80/raw/83837a1f73c63056adaabeec6cbc8f9172e7b535/login.js"></script>
+	
+</head>
+
+<body class="light-blue"  ng-app="login" ng-controller="loginController">
+
+
+
+<div  layout="column" layout-align="center center" layout-fill="layout-fill">
+  <div layout="column" class="loginBox md-whiteframe-z1">
+    <md-toolbar>
+      <h2 class="md-toolbar-tools"><span>Login</span></h2>
+    </md-toolbar>
+    <div class="alert alert-danger" style="margin: 5px;" ng-show="erreur">
+ 		 <strong>Erreur!</strong>Verifier Vos coordonnées
+	</div>
+    <form name="form" th:action="@{/signin}" method="POST" novalidate>
+    <md-content layout="column" class="md-padding">
+      <md-input-container>
+        <label>Nom utilisateur</label>
+        <input type="text" ng-model="username" name="username" ng-required="true" ng-change="verifUsername()"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Mot de passe</label>
+        <input type="password" ng-model="password" name="password" ng-required="true" ng-change="verifPassword()"/>
+      </md-input-container>
+      <div layout="row" layout-align="center center" style="padding-top:20px;">
+        <div ng-show="valid"><md-button class="md-raised md-primary" type="submit"  >Login</md-button></div>
+        <div flex="flex"></div>
+        <md-button href="/passwordForget" md-no-ink="md-no-ink" >Mot de passe oublié!</md-button>
+      </div>
+    </md-content>
+    </form>
+  </div>
+
+</body>
+
+</html>
